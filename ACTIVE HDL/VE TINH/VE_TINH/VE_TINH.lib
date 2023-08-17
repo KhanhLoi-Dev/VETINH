@@ -1,0 +1,60 @@
+timestamp=1692259429481
+
+[~A]
+ModifyID=320
+Version=74
+
+[~MFT]
+0=12|0VE_TINH.mgf|2024907|1992056
+1=6|1VE_TINH.mgf|4120076|4108506
+3=6|3VE_TINH.mgf|3434574|3426273
+
+[kl_simulator]
+BinW64/kl_simulator=3*3432157
+E=1*4118975
+I=0*16503
+I/kl_simulator=I/KL_Simulator 0*2006663
+M=3|2|vef|1690964588077|../src/KL_Simulator.vhd|0*15913*0xabfde71b009d66f1bada9273ab98fb36c742c978|0*16414*0x23b75c12e3e89f2ef000564498faa8c2
+M/kl_simulator=M/KL_Simulator 4|2|vef|1692259429408|../src/KL_Simulator.vhd|0*279140*0x0fcee413fb60a8e40b88f4d651d543316172e715|0*280391*0x9065d32a2e40e13794b29a2731812845
+R=../src/KL_Simulator.vhd|3
+Version=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|a63c30f48a080a97bfc92a534f26c13b5437f96a624ad36a13be0d90ac7ffcc20353fc4d7ba0bdcc941475f70cd53b48
+Version/kl_simulator=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|a63c30f48a080a97bfc92a534f26c13b5437f96a624ad36a13be0d90ac7ffcc21387840b03cdb328c82885abdfe39604
+
+[spi_protocol]
+A/spi_protocol_behavioral=A/SPI_Protocol_Behavioral 21|../src/SPI_Slave.vhd|22|1*434114
+BinW64/spi_protocol_behavioral=3*348949
+I=0*160641
+I/spi_protocol_behavioral=I/SPI_Protocol_Behavioral 0*172584
+M=11|2|vef|1691290611873|../src/SPI_Slave.vhd|0*159790*0x8bbc32c7098902804f07d8b2966aa0cf88a7b0b9|0*160555*0x23b75c12e3e89f2ef000564498faa8c2
+M/spi_protocol_behavioral=M/SPI_Protocol_Behavioral 21|2|vef|1691290721637|../src/SPI_Slave.vhd|0*167882*0x810e8cb6b2d640ab27ec44cf51f4c81bdc14ef31|0*172471*0x9065d32a2e40e13794b29a2731812845
+R=../src/SPI_Slave.vhd|4
+Version=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|24deccbd7fa15308e2fd3afdd17e6728a7da75766404afdd75842aa8744bb74553cdb8ab6c3d9031051d7dbb3291ee71
+Version/spi_protocol_behavioral=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|442735d2ff917003ef469d3b5a961a62c36c8f559f70bfcda25ea3ea3a19fc3d26527262ddaa47cb266f3a3c4d9b973a59e92d4a8068f6baf505f1bed266764c
+
+[spi_slave]
+A/spi_slave_behavioral=A/SPI_Slave_Behavioral 21|../src/SPI_Slave.vhd|32|1*4120076
+BinW64/spi_slave_behavioral=3*3434574
+I=0*1928218
+I/spi_slave_behavioral=I/SPI_Slave_Behavioral 0*2024907
+M=11|2|vef|1692246746210|../src/SPI_Slave.vhd|0*1927298*0x958cf68fc8cadb0cec26848ba548db0afe943208|0*1928135*0x23b75c12e3e89f2ef000564498faa8c2
+M/spi_slave_behavioral=M/SPI_Slave_Behavioral 21|2|vef|1692259429427|../src/SPI_Slave.vhd|0*2006882*0x9a0f49433cf4eb01ab0b6aea1550234005486956|0*2024800*0x9065d32a2e40e13794b29a2731812845
+R=../src/SPI_Slave.vhd|12
+Version=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|9c882834fb562f6811a6aa6f5a6f000c1e874e273e2e1516d793c3a8f89c9490a4b3dc35daba518a22193b015751faa9
+Version/spi_slave_behavioral=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|3cab131d268d45dd7392b3e88d424a714d0b849385227765d13895251f1641888d560860c8e56e1d2a7b45ca0696925a
+
+[yourentity]
+A/behavioral=A/Behavioral 21|../src/testSPI.vhd|14|1*4113620
+BinW64/behavioral=3*3430745
+I=0*19074
+I/behavioral=I/Behavioral 0*2006338
+M=11|2|vef|1690964591929|../src/testSPI.vhd|0*18701*0x4736cc0aa9c60e71acdecbb1b7359bea5240751a|0*18992*0x23b75c12e3e89f2ef000564498faa8c2
+M/behavioral=M/Behavioral 21|2|vef|1692259429382|../src/testSPI.vhd|0*1801440*0x30962443a7132236ca36fda9ae1df457d195fde5|0*1804382*0x9065d32a2e40e13794b29a2731812845
+R=../src/testSPI.vhd|7
+Version=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|b04c4ff94be1c94dd4da34cbf783bf41e480fbb28479c2493baac381655241919fe7ec5bb2a464d4156a3e1bb1a65a35
+Version/behavioral=13.0.375.8320 (Windows64)|00000004789cd34d494a0700030f015b|35f8e56ee514308d50318f7abb190927faf8176ad6902a7357df79bb1a85bff4059b6fc03b28134d66ec217701455eb4
+
+[~U]
+kl_simulator=KL_Simulator 3|0*15533|0*15663
+spi_protocol=SPI_Protocol 11|0*159414|
+spi_slave=SPI_Slave 11|0*1926917|
+yourentity=YourEntity 11|0*18513|

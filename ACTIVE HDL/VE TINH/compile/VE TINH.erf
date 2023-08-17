@@ -1,0 +1,12 @@
+MESSAGE "File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd" 
+MESSAGE "Compile Entity "YourEntity"" 
+MESSAGE "Compile Architecture "Behavioral" of Entity "YourEntity"" 
+WARNING COMP96_0564: "Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)" "D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd" 36 3
+WARNING COMP96_0564: "Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)" "D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd" 45 3
+MESSAGE "File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd" 
+MESSAGE "Compile Package "KL_Simulator"" 
+MESSAGE "Compile Package Body "KL_Simulator"" 
+MESSAGE "File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd" 
+MESSAGE "Compile Entity "SPI_Slave"" 
+MESSAGE "Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"" 
+SUCCESS "Compile success 0 Errors 2 Warnings  Analysis time :  0.1 [s]" 

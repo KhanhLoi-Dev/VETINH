@@ -1,0 +1,3 @@
+.\src\testSPI.vhd
+.\src\KL_Simulator.vhd
+.\src\SPI_Slave.vhd
