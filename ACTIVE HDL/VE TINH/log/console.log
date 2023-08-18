@@ -41,22 +41,24 @@ asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
 # SLP: Elaboration phase ...
 # SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
 # SLP: Finished : 0.0 [s]
-# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# ELAB2: Elaboration final pass complete - time: 0.2 [s].
 # KERNEL: Kernel process initialization done.
-# Allocation: Simulator allocated 6723 kB (elbread=427 elab2=6130 kernel=166 sdf=0)
+# Allocation: Simulator allocated 6723 kB (elbread=427 elab2=6129 kernel=166 sdf=0)
 # KERNEL: ASDB file was created in location D:\VE_TINH\ACTIVE HDL\VE TINH\src\wave.asdb
 # Stimuli: Warning: The stimuli set "StimuliSet1" has been made inactive.
-#  1:59 CH, 17 Tha?ng Ta?m 2023
+#  9:07 SA, 18 Tha?ng Ta?m 2023
 #  Simulation has been initialized
 # VSIM: 10 object(s) traced.
 # Waveform file 'untitled.awc' connected to 'D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb'.
-# Stimuli: Info: The stimuli set "StimuliSet1" has been made active.
 # VSIM: 54 object(s) traced.
+# Stimuli: Info: The stimuli set "StimuliSet1" has been made active.
 run
 # KERNEL: ERROR  : TextIO internal error: Could not read type "STRING" from line.
 # KERNEL: Time: 665 ns,  Iteration: 0,  Instance: /YourEntity,  Process: line__51.
 # KERNEL: Stopped at time 665 ns + 0.
-acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd
+endsim
+# VSIM: Simulation has finished.
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
 # File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
 # Compile Entity "YourEntity"
 # Compile Architecture "Behavioral" of Entity "YourEntity"
@@ -68,9 +70,485 @@ acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator
 # File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
 # Compile Entity "SPI_Slave"
 # Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
-# Compile success 0 Errors 2 Warnings  Analysis time :  0.1 [s]
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave"
+# Warning: COMP96_0994: SPI_Slave_synthesis.vhd : (41, 1): Multiple entity "SPI_Slave" found in "D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd", "D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd".
+# Compile Architecture "Structure" of Entity "SPI_Slave"
+# Compile success 0 Errors 3 Warnings  Analysis time :  0.2 [s]
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Error: The contents of entity 've_tinh.spi_slave' instantiated in architecture 'Behavioral:YourEntity' differ from the contents available during the compilation of this architecture.
+# ELBREAD: Error: Elaboration process completed with errors.
+# Design: Error: Elaboration failed
+# Error: VSIM: cannot select specified top-level
+# ELBREAD: Elaboration process.
+# ELBREAD: Error: The contents of entity 've_tinh.spi_slave' instantiated in architecture 'Behavioral:YourEntity' differ from the contents available during the compilation of this architecture.
+# ELBREAD: Error: Elaboration process completed with errors.
+# Design: Error: Elaboration failed
+# ELBREAD: Elaboration process.
+# ELBREAD: Error: The contents of entity 've_tinh.spi_slave' instantiated in architecture 'Behavioral:YourEntity' differ from the contents available during the compilation of this architecture.
+# ELBREAD: Error: Elaboration process completed with errors.
+# Design: Error: Elaboration failed
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (36, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (45, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: ELAB1_0026: testSPI.vhd : (91, 0): There is no default binding for component "SPI_Slave". (Generic "ENT_Leangth" is not on the entity).
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave"
+# Warning: COMP96_0994: SPI_Slave_synthesis.vhd : (41, 1): Multiple entity "SPI_Slave" found in "D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd", "D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd".
+# Compile Architecture "Structure" of Entity "SPI_Slave"
+# Compile success 0 Errors 4 Warnings  Analysis time :  0.3 [s]
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.2 [s].
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.2 [s].
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.2 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELBREAD: Warning: ELBREAD_0037 testSPI.vhd (91): Component /YourEntity/spi_slave_a : SPI_Slave not bound.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 5417 kB (elbread=427 elab2=4845 kernel=143 sdf=0)
+# KERNEL: ASDB file was created in location D:\VE_TINH\ACTIVE HDL\VE TINH\src\wave.asdb
+# Stimuli: Warning: The stimuli set "StimuliSet1" has been made inactive.
+#  9:18 SA, 18 Tha?ng Ta?m 2023
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb'.
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (36, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (45, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: ELAB1_0026: testSPI.vhd : (91, 0): There is no default binding for component "SPI_Slave1". (No entity named "SPI_Slave1" was found).
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave1"
+# Compile Architecture "Structure" of Entity "SPI_Slave1"
+# Compile success 0 Errors 3 Warnings  Analysis time :  0.2 [s]
+restart
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.2 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELBREAD: Warning: ELBREAD_0037 testSPI.vhd (91): Component /YourEntity/spi_slave_a : SPI_Slave1 not bound.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 5417 kB (elbread=427 elab2=4845 kernel=143 sdf=0)
+# KERNEL: ASDB file was created in location D:\VE_TINH\ACTIVE HDL\VE TINH\src\wave.asdb
+#  9:19 SA, 18 Tha?ng Ta?m 2023
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb'.
+# VSIM: 10 object(s) traced.
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (53, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (62, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: ELAB1_0026: testSPI.vhd : (108, 0): There is no default binding for component "SPI_Slave_Syn". (No entity named "SPI_Slave_Syn" was found).
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave_Syn"
+# Compile Architecture "Structure" of Entity "SPI_Slave_Syn"
+# Compile success 0 Errors 3 Warnings  Analysis time :  0.2 [s]
+restart
+# ELBREAD: Elaboration process.
+# ELBREAD: Warning: Entity ve_tinh.SPI_Slave_Syn has been compiled after architecture ve_tinh.YourEntity(Behavioral) that instantiates and binds this entity at simulation initialization. Recompile the source files in the correct order to perform the binding operation during compilation and simultaneously reduce the time required to initialize the simulation.
+# ELBREAD: Warning: The contents of entity 'SPI_Slave_Syn' instantiated in architecture 'Behavioral' differ from the contents available during the compilation of this architecture.
+# ELBREAD: Elaboration time 0.2 [s].
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 6890 kB (elbread=430 elab2=6294 kernel=166 sdf=0)
+# KERNEL: ASDB file was created in location D:\VE_TINH\ACTIVE HDL\VE TINH\src\wave.asdb
+#  9:20 SA, 18 Tha?ng Ta?m 2023
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb'.
+# VSIM: 144 object(s) traced.
+# Stimuli: Info: The stimuli set "StimuliSet1" has been made active.
+run
+# KERNEL: ERROR  : TextIO internal error: Could not read type "STRING" from line.
+# KERNEL: Time: 665 ns,  Iteration: 0,  Instance: /YourEntity,  Process: line__68.
+# KERNEL: Stopped at time 665 ns + 0.
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (53, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (62, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave_Syn"
+# Compile Architecture "Structure" of Entity "SPI_Slave_Syn"
+# Compile success 0 Errors 2 Warnings  Analysis time :  0.2 [s]
 restart
 # ELBREAD: Elaboration process.
 # ELBREAD: Elaboration time 0.0 [s].
 # KERNEL: Main thread initiated.
-# KERNEL: Kernel proce
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Fatal Error: ELAB2_0007 testSPI.vhd (108): Length of actual parameter (8) does not match the length of formal parameter "ENT_DataIn" (16) (from component).
+# ELAB2: Last instance before error: /YourEntity/spi_slave_a
+# KERNEL: Error: E8005 : Kernel process initialization failed.
+# VSIM: Error: Simulation initialization failed.
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Fatal Error: ELAB2_0007 testSPI.vhd (108): Length of actual parameter (8) does not match the length of formal parameter "ENT_DataIn" (16) (from component).
+# ELAB2: Last instance before error: /YourEntity/spi_slave_a
+# KERNEL: Error: E8005 : Kernel process initialization failed.
+# VSIM: Error: Simulation initialization failed.
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Fatal Error: ELAB2_0007 testSPI.vhd (108): Length of actual parameter (8) does not match the length of formal parameter "ENT_DataIn" (16) (from component).
+# ELAB2: Last instance before error: /YourEntity/spi_slave_a
+# KERNEL: Error: E8005 : Kernel process initialization failed.
+# VSIM: Error: Simulation initialization failed.
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Fatal Error: ELAB2_0007 testSPI.vhd (108): Length of actual parameter (8) does not match the length of formal parameter "ENT_DataIn" (16) (from component).
+# ELAB2: Last instance before error: /YourEntity/spi_slave_a
+# KERNEL: Error: E8005 : Kernel process initialization failed.
+# VSIM: Error: Simulation initialization failed.
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (53, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (62, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave_Syn"
+# Compile Architecture "Structure" of Entity "SPI_Slave_Syn"
+# Compile success 0 Errors 2 Warnings  Analysis time :  0.2 [s]
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Fatal Error: ELAB2_0007 testSPI.vhd (108): Length of actual parameter (8) does not match the length of formal parameter "ENT_DataIn" (16) (from component).
+# ELAB2: Last instance before error: /YourEntity/spi_slave_a
+# KERNEL: Error: E8005 : Kernel process initialization failed.
+# VSIM: Error: Simulation initialization failed.
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (53, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (62, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave_Syn"
+# Compile Architecture "Structure" of Entity "SPI_Slave_Syn"
+# Compile success 0 Errors 2 Warnings  Analysis time :  0.2 [s]
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (53, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (62, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave_Syn"
+# Compile Architecture "Structure" of Entity "SPI_Slave_Syn"
+# Compile success 0 Errors 2 Warnings  Analysis time :  0.1 [s]
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Fatal Error: ELAB2_0007 testSPI.vhd (108): Length of actual parameter (8) does not match the length of formal parameter "ENT_DataIn" (16) (from component).
+# ELAB2: Last instance before error: /YourEntity/spi_slave_a
+# KERNEL: Error: E8005 : Kernel process initialization failed.
+# VSIM: Error: Simulation initialization failed.
+acom -dbg -e 100 -work VE_TINH -2002  $dsn/src/testSPI.vhd $dsn/src/KL_Simulator.vhd $dsn/src/SPI_Slave.vhd $dsn/src/SPI_Slave_synthesis.vhd
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/testSPI.vhd
+# Compile Entity "YourEntity"
+# Compile Architecture "Behavioral" of Entity "YourEntity"
+# Warning: COMP96_0564: testSPI.vhd : (53, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# Warning: COMP96_0564: testSPI.vhd : (62, 3): Shared variable is not of a protected type. (IEEE 1076-2002, 4.3.1.3)
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/KL_Simulator.vhd
+# Compile Package "KL_Simulator"
+# Compile Package Body "KL_Simulator"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave.vhd
+# Compile Entity "SPI_Slave"
+# Compile Architecture "SPI_Slave_Behavioral" of Entity "SPI_Slave"
+# File: D:/VE_TINH/ACTIVE HDL/VE TINH/src/SPI_Slave_synthesis.vhd
+# Compile Entity "SPI_Slave_Syn"
+# Compile Architecture "Structure" of Entity "SPI_Slave_Syn"
+# Compile success 0 Errors 2 Warnings  Analysis time :  0.2 [s]
+asim -xtrace -O5 +access +r +m+YourEntity YourEntity Behavioral
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... skipped, nothing to simulate in SLP mode : 0.0 [s]
+# SLP: Finished : 0.0 [s]
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 6723 kB (elbread=427 elab2=6130 kernel=166 sdf=0)
+# KERNEL: ASDB file was created in location D:\VE_TINH\ACTIVE HDL\VE TINH\src\wave.asdb
+# Stimuli: Warning: The stimuli set "StimuliSet1" has been made inactive.
+#  9:31 SA, 18 Tha?ng Ta?m 2023
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb'.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_7_IBUF_0 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_6_IBUF_1 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_5_IBUF_2 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_4_IBUF_3 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_3_IBUF_4 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_2_IBUF_5 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_1_IBUF_6 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataIn_0_IBUF_7 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_ClkIn_BUFGP_8 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DataNewEvent_BUFGP_9 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_SCK_BUFGP_10 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_MOSI_IBUF_11 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_NSS_IBUF_BUFG_12 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DeviceResetEvent_IBUF_13 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_CRCEvent_BUFGP_14 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCStartReset_23 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMisoTempEmptyReset_24 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataInputCompute_25 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataNewEventReset_26 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCStart_27 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/DataMisoControl_PROC_DataMisoEmptyFlag_28 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/DataMisoControl_PROC_DataTransmitEnd_37 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CounterSCKEventReset_38 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataFrameComputer_39 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/CRC_DataInput_PROC_DataOne_51 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataMosiCheckAccess_52 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMisoReset_53 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMisoTempEmptyFlag_54 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMisoTempError_55 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiEmptyReset_56 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CounterSCKEvent_57 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiEmptySet_66 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_7_ENT_MOSI_MUX_45_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_6_ENT_MOSI_MUX_46_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_5_ENT_MOSI_MUX_47_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_4_ENT_MOSI_MUX_48_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_3_ENT_MOSI_MUX_49_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_2_ENT_MOSI_MUX_50_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_1_ENT_MOSI_MUX_51_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi_0_ENT_MOSI_MUX_52_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_NSS_ENT_DeviceResetEvent_OR_8_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_NSSErrorHighNSS_76 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DeviceStatus_77 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_NSSErrorLowNSS_78 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DeviceResetEvent_ARC_DataMisoTempEmptyReset_OR_2_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DeviceResetEvent_ARC_DataMisoReset_OR_5_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DeviceResetEvent_ARC_DeviceStatus_AND_10_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DeviceResetEvent_ARC_DeviceStatus_OR_17_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataNewEventReset_ENT_DeviceResetEvent_OR_16_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCStartReset_ENT_DeviceResetEvent_OR_4_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiEmptyReset_ENT_DeviceResetEvent_OR_12_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CounterSCKEventReset_ENT_DeviceResetEvent_OR_10_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCEvent_87 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_7_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_6_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_5_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_4_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_3_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_2_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_1_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMiso_7_ARC_DataMisoTemp_7_mux_6_OUT_0_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataNewEventFlag_104 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_Counter_2_GND_4_o_mux_14_OUT_2_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_Counter_2_GND_4_o_mux_14_OUT_1_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_Counter_2_GND_4_o_mux_14_OUT_0_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataOutput_7_ARC_CRCDataOutput_7_mux_108_OUT_2_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCCheckError_109 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCEvent_ARC_DataMisoEmptyFlag_AND_2_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataMosiComputer_7_INV_76_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataReceiveEvent_120 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_DeviceResetEvent_ARC_DeviceStatus_OR_14_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_Error_2_OBUF_122 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DeviceStatus_ARC_CRCDataMosiComputerEvent_AND_26_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GND_4_o_GND_4_o_MUX_54_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GND_4_o_ARC_CRCEvent_MUX_24_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/DataMisoControl_PROC_DataTransmitEnd_ARC_CRCEvent_MUX_26_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataFrameComputer_PWR_4_o_MUX_23_o not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataMosiComputerEvent_128 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_MISO_OBUF_129 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_Counter_2_Decoder_21_OUT_7_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_Counter_2_Decoder_21_OUT_0_Q not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/N0 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/N1 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/Q_n0653_inv not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/Q_n0675_inv not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/Mmux_ENT_MISO_4_151 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/Mmux_ENT_MISO_3_152 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataMosiComputer_7_INV_76_o1_153 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataMosiComputer_7_INV_76_o2_154 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataMosiComputer_7_INV_76_o3_155 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_CRCDataMosiComputerEvent_glue_set_185 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DeviceStatus_rstpot_186 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_NSSErrorLowNSS_rstpot_187 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMisoTempError_rstpot_188 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataFrameComputer_rstpot_189 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/CRC_DataInput_PROC_DataOne_rstpot_190 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMisoReset_rstpot1_191 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DeviceStatus_1_192 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ENT_NSS_IBUF_193 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_7_1_194 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_6_1_195 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_5_1_196 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_4_1_197 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_3_1_198 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_2_1_199 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_1_1_200 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMosiTemp_0_1_201 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataMisoTempEmptyFlag_1_202 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/ARC_DataReceiveEvent_1_203 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/GetDataMosi_PROC_DataMosi not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/Q_n0633 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0358 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0437 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0361 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0440 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0364 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0443 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0367 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0446 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0370 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0449 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0373 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0452 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0376 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# Warning: WAVEFORM: Object matching /YourEntity/spi_slave_a/n0455 not found in D:/VE_TINH/ACTIVE HDL/VE TINH/src/wave.asdb.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_SCK" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_MISO" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_MOSI" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_NSS" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_CRC" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_RESET" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_dataout" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/ARC_newevent" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/clk" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/signalA" has already been traced.
+# VSIM: 0 object(s) traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ARC_DataMisoTemp" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ARC_DataMiso" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ARC_DataMosiTemp" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ARC_Counter" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ARC_CRCDataOutput" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ARC_CRCDataMosiComputer" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ENT_ClkIn" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ENT_DataNewEvent" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ENT_DataIn" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ENT_DataOut" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_slave_a/ENT_SCK" has already been traced.
+# KERNEL: Warning: KERNEL_0291 Object "/YourEntity/spi_s

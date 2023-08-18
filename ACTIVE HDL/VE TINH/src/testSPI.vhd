@@ -13,8 +13,8 @@ end entity YourEntity;
 
 architecture Behavioral of YourEntity is
   component SPI_Slave is
-	generic(ENT_Leangth: integer:= 16;
-			ENT_CRCEnable: boolean:= false;--bật CRC Check
+	generic(ENT_Leangth: integer:= 8;
+			ENT_CRCEnable: boolean:= true;--bật CRC Check
 			ENT_Polynomial: std_logic_vector(8 downto 0):= "100000101"
 			);
 	port(ENT_ClkIn: in std_logic:= '0';
@@ -32,6 +32,23 @@ architecture Behavioral of YourEntity is
 		ENT_Error: out std_logic_vector(2 downto 0):= (others=> '0')--lỗi
 		);
 end component SPI_Slave;
+component  SPI_Slave_Syn is
+  port (
+    ENT_ClkIn : in STD_LOGIC := 'X'; 
+    ENT_DataNewEvent : in STD_LOGIC := 'X'; 
+    ENT_SCK : in STD_LOGIC := 'X'; 
+    ENT_MOSI : in STD_LOGIC := 'X'; 
+    ENT_NSS : in STD_LOGIC := 'X'; 
+    ENT_DeviceResetEvent : in STD_LOGIC := 'X'; 
+    ENT_CRCEvent : in STD_LOGIC := 'X'; 
+    ENT_MISO : out STD_LOGIC; 
+    ENT_DataEmpty : out STD_LOGIC; 
+    ENT_DataReceiveEvent : out STD_LOGIC; 
+    ENT_DataIn : in STD_LOGIC_VECTOR ( 7 downto 0 ); 
+    ENT_DataOut : out STD_LOGIC_VECTOR ( 7 downto 0 ); 
+    ENT_Error : out STD_LOGIC_VECTOR ( 2 downto 0 ) 
+  );
+end component SPI_Slave_Syn;
   file CSDL: text;
   shared variable PROC_Line: line;
   signal ARC_SCK: std_logic:= '0';
@@ -88,8 +105,7 @@ begin
     ARC_RESET<= PROC_Resert;
     ARC_CRC<= PROC_CRC;
   end process;
-  spi_slave_a: spi_slave generic map(ENT_Leangth=>8, ENT_CRCEnable=> true) 
-                          PORT map(ENT_DataIn=> ARC_dataout,
+  spi_slave_a: SPI_Slave PORT map(ENT_DataIn=> ARC_dataout,
                                   ENT_ClkIn=>CLK,
                                   ENT_SCK=> ARC_SCK,
                                   ENT_DataNewEvent=> ARC_newevent,

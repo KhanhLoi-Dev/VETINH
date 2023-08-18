@@ -19,7 +19,7 @@ LANGUAGE=VHDL
 REFRESH_FLOW=1
 FLOWTOOLS=NONE
 FAMILY=Xilinx14x SPARTAN6
-fileopenfolder=D:\VE_TINH\ACTIVE HDL\VE TINH\src
+fileopenfolder=Y:\KL-DEV\D\VE_TINH\netgen\synthesis
 AddGeneratedFilesToDesignBrowser=0
 DesignStatusPath=$dsn\src\DESIGN_STATUS
 DesignActivationScript=$dsn\design.do
@@ -41,10 +41,12 @@ Selected=
 /testSPI.vhd=-1
 /KL_Simulator.vhd=-1
 /SPI_Slave.vhd=-1
+/SPI_Slave_synthesis.vhd=-1
 [Files.Data]
 .\src\testSPI.vhd=VHDL Source Code
 .\src\KL_Simulator.vhd=VHDL Source Code
 .\src\SPI_Slave.vhd=VHDL Source Code
+.\src\SPI_Slave_synthesis.vhd=VHDL Source Code
 [DesignStructure]
 SymbolSheet=.\src
 WaveformASDBC=.\src

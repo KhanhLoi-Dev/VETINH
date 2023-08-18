@@ -1,7 +1,12 @@
-320
+334
 ~E 1 "../src/SPI_Slave.vhd" 4 SPI_Protocol
 ~A 1 "../src/SPI_Slave.vhd" 22 SPI_Protocol_Behavioral
 ~E 1 "../src/SPI_Slave.vhd" 12 SPI_Slave
 ~A 1 "../src/SPI_Slave.vhd" 32 SPI_Slave_Behavioral
+~A 1 "../src/SPI_Slave_synthesis.vhd" 59 structure
+~E 1 "../src/SPI_Slave_synthesis.vhd" 41 SPI_Slave1
+~A 1 "../src/SPI_Slave_synthesis.vhd" 59 Structure
+~E 1 "../src/SPI_Slave_synthesis.vhd" 41 SPI_Slave_Syn
+~A 1 "../src/SPI_Slave_synthesis.vhd" 59 Structure
 ~E 1 "../src/testSPI.vhd" 7 YourEntity
 ~A 1 "../src/testSPI.vhd" 14 Behavioral

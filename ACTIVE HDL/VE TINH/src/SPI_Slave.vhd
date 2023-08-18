@@ -84,12 +84,13 @@ architecture SPI_Slave_Behavioral of SPI_Slave is
 	alias ARC_CRCDataMosiCheckEvent is ARC_DataMosiEmptySet;--sự kiện kiểm tra crc nhận từ server 
 	signal ARC_CRCDataMosiCheckAccess: boolean:= false;-- không cho phép kiểm tra crc
 	signal ARC_CRCDataMosiTemp: std_logic_vector((ENT_Leangth *2) -1 downto 0):= (others=> '0');
-	signal ARC_CRCDataMosiOne: std_logic:= '1';--chỉ nhận 1 data
+	signal ARC_CRCDataMosiOne: boolean:= true;--chỉ nhận 1 data
 	signal ARC_CRCDataMosiComputer: std_logic_vector((ENT_Leangth -1) downto 0):= (others=> '0');--data crc khi tính toáng xong
 	--signal ARC_CRCDataMosiReceive: std_logic_vector((ENT_Leangth -1) downto 0):= (others=> '0');--crc nhận từ server
 	signal ARC_CRCDataMosiComputerEvent: std_logic:= '0';-- sự kiện sau khi tính toán xong crc
 	--signal ARC_CRCDataMosiComputerEventReset: std_logic:= '0';--reset
 	signal ARC_CRCDataMosiOK: boolean:= false;-- chưa hoàng thành crc
+
 begin	
 	--set DataMiSO
 	--ENT_cc<= ARC_CRCDataInput;
@@ -274,33 +275,36 @@ begin
 		variable PROC_I: integer range (ENT_Leangth -1) downto 0:= (ENT_Leangth -1);
 		variable PROC_CounterSCKEventReset: std_logic:= '0';--reset tín hiệu ARC_CounterSCKEvent
 		variable PROC_DataFrameComputer: boolean:= false; -- chưa ruyền xong một khung data
+		variable PROC_CRCDataOne: boolean:= true;-- chỉ nhận một data
     begin
 		if(ENT_ClkIn'event and ENT_ClkIn = '1')then
-			if(ARC_DeviceStatus = true)then
-				--Device đã hoặt động và bắt đầu đếm
-				if(ARC_CounterSCKEvent = '1')then
-					PROC_CounterSCKEventReset:= '1';--RESERT tin hiệu ARC_CounterSCKEvent
-					ARC_CounterSCKEventReset<= PROC_CounterSCKEventReset;
-					if(PROC_I = 0)then
-						PROC_I:= ENT_Leangth -1;
-						PROC_DataFrameComputer:= true;--đã truyền xong một khung data
-						ARC_DataFrameComputer<= PROC_DataFrameComputer;
-					else
-						PROC_I:= PROC_I -1;
-						PROC_DataFrameComputer:= false;
-						ARC_DataFrameComputer<= PROC_DataFrameComputer;
-					end if;
-					ARC_Counter<= PROC_I;
-				else
-					PROC_I:= ARC_Counter;
-					ARC_Counter<= PROC_I;
-					PROC_CounterSCKEventReset:= '0';
-					ARC_CounterSCKEventReset<= PROC_CounterSCKEventReset;
-					PROC_DataFrameComputer:= ARC_DataFrameComputer;
+			--Device đã hoặt động và bắt đầu đếm
+			if(ARC_CounterSCKEvent = '1' and ARC_DeviceStatus = true)then
+				PROC_CounterSCKEventReset:= '1';--RESERT tin hiệu ARC_CounterSCKEvent
+				ARC_CounterSCKEventReset<= PROC_CounterSCKEventReset;
+				if(PROC_I = 0)then
+					PROC_I:= ENT_Leangth -1;
+					PROC_DataFrameComputer:= true;--đã truyền xong một khung data
 					ARC_DataFrameComputer<= PROC_DataFrameComputer;
+					PROC_CRCDataOne:= false;
+					ARC_CRCDataOne<= PROC_CRCDataOne;
+				else
+					PROC_I:= PROC_I -1;
+					PROC_DataFrameComputer:= false;
+					ARC_DataFrameComputer<= PROC_DataFrameComputer;
+					PROC_CRCDataOne:= ARC_CRCDataOne;
+					ARC_CRCDataOne<= PROC_CRCDataOne;
 				end if;
+				ARC_Counter<= PROC_I;
 			else
-				--chưa hoạt động
+				PROC_I:= ARC_Counter;
+				ARC_Counter<= PROC_I;
+				PROC_CounterSCKEventReset:= '0';
+				ARC_CounterSCKEventReset<= PROC_CounterSCKEventReset;
+				PROC_DataFrameComputer:= ARC_DataFrameComputer;
+				ARC_DataFrameComputer<= PROC_DataFrameComputer;
+				PROC_CRCDataOne:= ARC_CRCDataOne;
+				ARC_CRCDataOne<= PROC_CRCDataOne;
 			end if;
 		end if;
 	end process Counter;
@@ -400,7 +404,6 @@ begin
 		end if;
 	end process;
 	CRC_DataInput: process(ARC_CRCCLK)is
-		variable PROC_DataOne: boolean:= true;-- data đầu tiên
 		variable PROC_CRCDataInput: std_logic_vector(((ENT_Leangth *2) -1) downto 0):= (others=> '0');
 		variable PROC_DataCRC: std_logic_vector(ENT_Leangth -1 downto 0):= (others=> '0');--data CRC
     begin
@@ -409,8 +412,8 @@ begin
 				ARC_CRCDataNewEventReset<= '1';--reset
 				PROC_CRCDataInput:= ARC_CRCDataInput;
 				PROC_CRCDataInput:= std_logic_vector(unsigned(PROC_CRCDataInput) sll ENT_Leangth);
-				PROC_CRCDataInput((ENT_Leangth -1) downto 0):= ARC_DataMiso;
-				if(PROC_DataOne = true)then
+				PROC_CRCDataInput:= (ENT_Leangth -1 downto 0=> '0')&ARC_DataMiso;
+				if(ARC_CRCDataOne = true)then
 					-- data là đầu tiên, không chạy crc
 					if(ARC_CRCEvent = '1')then
 						--chỉ truyề 1 data, hoàng thành crc
@@ -427,12 +430,8 @@ begin
 						PROC_DataCRC:= PROC_CRCDataInput((ENT_Leangth *2) -1 downto ENT_Leangth);
 						ARC_CRCDataInput<= PROC_CRCDataInput;
 						ARC_CRCDataOutput<= PROC_DataCRC;
-						PROC_DataOne:= true;
-						ARC_CRCDataOne<= PROC_DataOne;
 					else
 						ARC_CRCDataInput<= PROC_CRCDataInput;
-						PROC_DataOne:= false;
-						ARC_CRCDataOne<= PROC_DataOne;
 						PROC_DataCRC:= ARC_CRCDataOutput;
 						ARC_CRCDataOutput<= PROC_DataCRC;
 					end if;
@@ -462,12 +461,8 @@ begin
 						PROC_DataCRC:= PROC_CRCDataInput((ENT_Leangth *2) -1 downto ENT_Leangth);--lấy data CRC khi hoàng thành
 						ARC_CRCDataInput<= PROC_CRCDataInput;
 						ARC_CRCDataOutput<= PROC_DataCRC;
-						PROC_DataOne:= true;
-						ARC_CRCDataOne<= PROC_DataOne;
 					else
 						ARC_CRCDataInput<= PROC_CRCDataInput;
-						PROC_DataOne:= false;
-						ARC_CRCDataOne<= PROC_DataOne;
 						PROC_DataCRC:= ARC_CRCDataOutput;
 						ARC_CRCDataOutput<= PROC_DataCRC;
 					end if;
@@ -478,34 +473,29 @@ begin
 				ARC_CRCDataOutput<= PROC_DataCRC;
 				PROC_CRCDataInput:= ARC_CRCDataInput;
 				ARC_CRCDataInput<= PROC_CRCDataInput;
-				PROC_DataOne:= ARC_CRCDataOne;
-				ARC_CRCDataOne<= PROC_DataOne;
 			end if;
 		end if;
 	end process CRC_DataInput;
 	---------------------------------------------------------------------------------------------------------------------------
 	--CRCMosi
-	DataInputCRC:process(ARC_CRCDataMosiInputNewEvent, ARC_DeviceStatus, ENT_DeviceResetEvent)is
+	DataInputCRC:process(ARC_CRCDataMosiInputNewEvent)is
 		variable PROC_CRCDataMosiTemp: std_logic_vector((ENT_Leangth *2) -1 downto 0):= (others=> '0');
-		variable PROC_CRCOneData: std_logic:= '1';-- chỉ nhận 1 data
 		variable PROC_CRCDataComputer: std_logic_vector((ENT_Leangth -1) downto 0):=(others=> '0');--data crc đã hòang thành
     begin
-		if(ENT_DeviceResetEvent = '1' or ARC_DeviceStatus = false)then
-			--reset
-			PROC_CRCDataMosiTemp:= (others=> '0');
-			PROC_CRCDataComputer:= (others=> '0');
-			ARC_CRCDataMosiTemp<= PROC_CRCDataMosiTemp;
-			ARC_CRCDataMosiComputer<= PROC_CRCDataComputer;--Data khi tính toáng xong crc
-			PROC_CRCOneData:= '1';
-			ARC_CRCDataMosiOne<= PROC_CRCOneData;
-		elsif(ARC_CRCDataMosiInputNewEvent'event and ARC_CRCDataMosiInputNewEvent = '1' and ENT_CRCEnable = true)then
-				PROC_CRCOneData:= ARC_CRCDataMosiOne;
-				if(PROC_CRCOneData = '1')then
+		if(ARC_CRCDataMosiInputNewEvent'event and ARC_CRCDataMosiInputNewEvent = '1' and ENT_CRCEnable = true)then
+			if(ENT_DeviceResetEvent = '1' or ARC_DeviceStatus = false)then
+				--reset
+				PROC_CRCDataMosiTemp:= (others=> '0');
+				PROC_CRCDataComputer:= (others=> '0');
+				ARC_CRCDataMosiTemp<= PROC_CRCDataMosiTemp;
+				ARC_CRCDataMosiComputer<= PROC_CRCDataComputer;--Data khi tính toáng xong crc
+			else
+				if(ARC_CRCDataOne = true)then
 					--mới nhận được 1 data
 					if(ARC_CRCDataMosiReceiveComputer = true)then
 						--đã nhận hết data
-						PROC_CRCDataMosiTemp(ENT_Leangth -1 downto 0):= ARC_DataMosiTemp;
 						PROC_CRCDataMosiTemp:= std_logic_vector(unsigned(PROC_CRCDataMosiTemp) sll ENT_Leangth);
+						PROC_CRCDataMosiTemp(ENT_Leangth -1 downto 0):= ARC_DataMosiTemp;
 						CRCMOSIComputerOneData: for i in ENT_Leangth -1 downto 0 loop
 							if(PROC_CRCDataMosiTemp((ENT_Leangth *2) -1) = '0')then
 								PROC_CRCDataMosiTemp:= PROC_CRCDataMosiTemp xor ARC_CRCZeroVector;
@@ -526,12 +516,10 @@ begin
 						PROC_CRCDataComputer:= ARC_CRCDataMosiComputer;--Data khi tính toáng xong crc
 						ARC_CRCDataMosiComputer<= PROC_CRCDataComputer;--Data khi tính toáng xong crc
 					end if;
-					PROC_CRCOneData:= '0';
-					ARC_CRCDataMosiOne<= PROC_CRCOneData;
 				else
 					PROC_CRCDataMosiTemp:= std_logic_vector(unsigned(PROC_CRCDataMosiTemp) sll ENT_Leangth);
 					PROC_CRCDataMosiTemp(ENT_Leangth -1 downto 0):= ARC_DataMosiTemp;
-					PROC_CRCDataMosiTemp:= (ENT_Leangth -1 downto 0 => '0')&ARC_DataMosiTemp;
+					--PROC_CRCDataMosiTemp:= (ENT_Leangth -1 downto 0 => '0')&ARC_DataMosiTemp;
 					CRCMOSI: for i in ENT_Leangth -1 downto 0 loop
 						if(PROC_CRCDataMosiTemp((ENT_Leangth *2) -1) = '0')then
 							PROC_CRCDataMosiTemp:= PROC_CRCDataMosiTemp xor ARC_CRCZeroVector;
@@ -561,9 +549,8 @@ begin
 						PROC_CRCDataMosiTemp:= ARC_CRCDataMosiTemp;
 						ARC_CRCDataMosiTemp<= PROC_CRCDataMosiTemp;
 					end if;
-					PROC_CRCOneData:= '0';
-					ARC_CRCDataMosiOne<= PROC_CRCOneData;
 				end if;
+			end if;
 		end if;
 	end process DataInputCRC;
 	CRCMosiCheckAccess: process (ENT_ClkIn, ENT_DeviceResetEvent, ARC_DeviceStatus, ARC_Counter, ARC_CRCDataMosiComputerEvent)is
